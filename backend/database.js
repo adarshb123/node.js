@@ -1,17 +1,22 @@
-// database.js
-const { Client } = require('pg');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
-// Create a new PostgreSQL client instance
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: 'Adarsh@123',
-  port: 5432, // Default PostgreSQL port
+const { Pool } = require('pg');
+
+const postgresURL = process.env.POSTGRES_URL;
+if (!postgresURL) {
+  console.error('Missing POSTGRES_URL environment variable.');
+  process.exit(1);
+}
+
+// Create a new PostgreSQL pool instance
+const pool = new Pool({
+  connectionString: postgresURL,
 });
+console.log("connectionString: " + postgresURL);
 
 // Connect to the PostgreSQL database
-client.connect()
+pool.connect()
   .then(() => {
     console.log('Connected to the PostgreSQL database');
   })
@@ -19,5 +24,5 @@ client.connect()
     console.error('Error connecting to the PostgreSQL database:', error);
   });
 
-// Export the client
-module.exports = client;
+// Export the pool
+module.exports = pool;

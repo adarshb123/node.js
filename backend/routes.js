@@ -1,7 +1,12 @@
 // routes.js
 const express = require('express');
 const router = express.Router();
-const database = require('./database');
+const { Pool } = require('pg');
+
+// Create a new PostgreSQL pool instance
+const pool = new Pool({
+    connectionString: process.env.POSTGRES_URL,
+});
 
 // Search endpoint
 router.get('/search', (req, res) => {
@@ -15,7 +20,7 @@ router.get('/search', (req, res) => {
   };
 
   // Execute the query
-  database.query(query)
+  pool.query(query)
     .then((result) => {
       console.log('Query result:', result.rows);
 

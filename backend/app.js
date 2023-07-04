@@ -1,4 +1,8 @@
 // app.js
+
+// console.log('process.env.POSTGRES:' +process.env.POSTGRES);
+// require('dotenv').config({ path: './.env' });
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');

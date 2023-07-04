@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(function (data) {
         var resultsDiv = document.getElementById('results');
+        console.log('Response data:', data);
         resultsDiv.innerHTML = data;
         console.log(resultsDiv);
       })
