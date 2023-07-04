@@ -3,7 +3,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const { Pool } = require('pg');
 
-const postgresURL = 'postgres://postgres:postgres@localhost:5432/postgres';
+const postgresURL = 'postgres://postgres:postgres@127.0.0.1:5432/postgres';
 if (!postgresURL) {
   console.error('Missing POSTGRES_URL environment variable.');
   process.exit(1);
