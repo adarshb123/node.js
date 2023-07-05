@@ -11,7 +11,7 @@ if (!postgresURL) {
 
 // Create a new PostgreSQL pool instance
 const pool = new Pool({
-  connectionString: "postgres://postgres:postgres@localhost:5432/postgres"
+  connectionString: "postgres://postgres:postgres@127.0.0.1:5432/postgres"
 });
 console.log("connectionString: " + postgresURL);
 console.log(typeof(postgresURL));
