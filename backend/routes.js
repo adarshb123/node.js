@@ -15,12 +15,12 @@ router.get('/search', (req, res) => {
 
   // Construct the SQL query
   const query = {
-    text: `SELECT * FROM public.question_papers WHERE student_class ILIKE $1 AND subject ILIKE $2 AND year = $3`,
+    text: `SELECT * FROM question_papers WHERE student_class ILIKE $1 AND subject ILIKE $2 AND year = $3`,
     values: [studentClass, subject, year],
   };
 
   // Execute the query
-  pool.query(`select * from public.question_papers`)
+  pool.query(`select * from question_papers`)
     .then((result) => {
       console.log('Query result:', result.rows);
 
